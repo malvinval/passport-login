@@ -1,6 +1,9 @@
 // import express
 const express = require("express");
 
+// initialize express app
+const app = express();
+
 // import express flash
 const flash = require("express-flash");
 
@@ -10,21 +13,11 @@ const passport = require("passport");
 // import express session package
 const session = require("express-session");
 
-// import initPassport function from passport-config.cjs
-const initPassport = require("./configs/passport.cjs");
+// import passport middleware
+const initPassport = require("./middlewares/passport.cjs");
 
-// import users array from data.cjs
-const data = require("./data.cjs");
-let users = data.users;
-// run the imported initPassport function
-initPassport(
-    passport,
-    email => users.find(user => user.email === email),
-    id => users.find(user => user.id === id)
-);
-
-// initialize express app
-const app = express();
+// middleware passport.js
+app.use(initPassport);
 
 // middleware for parsing application/json in request body
 app.use(express.json());
@@ -43,6 +36,7 @@ app.use(session({
 }));
 
 app.use(passport.initialize());
+
 app.use(passport.session());
 
 // export express

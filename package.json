@@ -5,6 +5,7 @@
   "scripts": {
     "devstart": "nodemon server.js"
   },
+  "type": "commonjs",
   "repository": {
     "type": "git",
     "url": "https://github.com/malvinval/passport-login.git"

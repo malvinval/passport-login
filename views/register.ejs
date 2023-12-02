@@ -1,1 +1,35 @@
-<h1>Register page</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <h1>Register page</h1>
+
+    <form action="/" method="POST">
+        <div style="margin-bottom: 10px;">
+            <label for="name">Fullname: </label>
+            <input type="text" name="name" id="name" required placeholder="Enter your fullname...">
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label for="email">Email: </label>
+            <input type="email" name="email" id="email" required placeholder="Enter your email...">
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label for="password">Password: </label>
+            <input type="password" name="password" id="password" required placeholder="Make a secure password...">
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div style="margin-top: 10px;">
+        <a href="/login">I already have an account</a>
+    </div>
+</body>
+</html>
+

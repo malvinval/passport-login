@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const passport = require("passport");
 const data = require("../data.cjs");
 const isAuth = require("../middlewares/isAuth.cjs");
+const isNotAuth = require("../middlewares/isNotAuth.cjs");
 
 /**
  * Route list.
@@ -14,22 +15,22 @@ app.get("/", isAuth, function(req, res) {
     res.render("index.ejs", {name: req.user.name});
 });
 
-app.get("/login", function(req, res) {
+app.get("/login", isNotAuth, function(req, res) {
     res.render("login.ejs");
 });
 
-app.post("/login", passport.authenticate("local", {
+app.post("/login", isNotAuth, passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/login",
     failureFlash: false
 }));
 
-app.get("/register", function(req, res) {
+app.get("/register", isNotAuth,function(req, res) {
     res.render("register.ejs");
 });
 
 // use async function to implement try-catch block
-app.post("/register", async function(req, res) {
+app.post("/register", isNotAuth, async function(req, res) {
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         data.storeUser({

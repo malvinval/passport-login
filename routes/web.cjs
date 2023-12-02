@@ -4,7 +4,7 @@
  * 2. We can pass data to view files through render's function second param.
  * 3. ExpressJS assumes all view files placed in a folder named "views"
  */
-const app = require("../app");
+const app = require("../app.cjs");
 
 app.get("/", function(req, res) {
     res.render("index.ejs", {name: "Valerian"});

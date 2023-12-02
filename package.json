@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "passport login",
   "scripts": {
-    "devstart": "nodemon server.js"
+    "devstart": "nodemon server.cjs"
   },
   "type": "commonjs",
   "repository": {
